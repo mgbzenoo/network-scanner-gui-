@@ -1,0 +1,22 @@
+import tkinter as tk
+from scanner import run_scan
+
+def scan():
+    target = entry.get()
+    output.delete("1.0", tk.END)
+    result = run_scan(target)
+    output.insert(tk.END, result)
+
+root = tk.Tk()
+root.title("Network Scanner GUI")
+
+tk.Label(root, text="Target IP or Domain:").pack()
+entry = tk.Entry(root, width=40)
+entry.pack()
+
+tk.Button(root, text="Run Scan", command=scan).pack()
+
+output = tk.Text(root, wrap="word", width=80, height=20)
+output.pack()
+
+root.mainloop()
